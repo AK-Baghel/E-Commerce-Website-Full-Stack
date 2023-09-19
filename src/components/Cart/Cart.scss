@@ -1,6 +1,6 @@
 @import "../../css-config/mixins.scss";
 .cart-panel {
-    position: fixed;
+    position:fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -94,6 +94,7 @@
 
         .cart-footer {
             border-top: 1px solid rgba(0, 0, 0, 0.1);
+            
             .subtotal {
                 padding: 20px 15px;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);

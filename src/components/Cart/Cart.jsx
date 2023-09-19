@@ -3,6 +3,7 @@ import { MdClose } from "react-icons/md";
 import { BsCartX } from "react-icons/bs";
 import { Context } from "../../utils/context";
 import CartItem from "./CartItem/CartItem";
+import { useNavigate } from "react-router-dom";
 // import { loadStripe } from "@stripe/stripe-js";
 // import { makePaymentRequest } from "../../utils/api";
 
@@ -10,6 +11,7 @@ import "./Cart.scss";
 
 const Cart = ({ setShowCart }) => {
     const { cartItems, cartSubTotal } = useContext(Context);
+    const navigate=useNavigate();
 
     // const stripePromise = loadStripe(
     //     process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
@@ -52,7 +54,11 @@ const Cart = ({ setShowCart }) => {
                     <div className="empty-cart">
                         <BsCartX />
                         <span>No products in the cart.</span>
-                        <button className="return-cta" >
+                        <button className="return-cta" onClick={()=>{
+                            navigate('/')
+                            setShowCart(false)
+                        }}>
+                            
                             RETURN TO SHOP
                         </button>
                     </div>

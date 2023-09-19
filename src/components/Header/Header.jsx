@@ -12,14 +12,22 @@ import { Context } from "../../utils/context";
 import "./Header.scss";
 
 const Header = () => {
-    const {cartCount}=useContext(Context);
+    const { cartCount } = useContext(Context);
+
+    const scroll = (check) => {
+        if (check === 'about')
+            window.scroll(0, 4050);
+        else
+            window.scroll(0, 850);
+    }
+
 
 
     const [scrolled, setScrolled] = useState(false);
     const [showCart, setShowCart] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
 
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -31,32 +39,32 @@ const Header = () => {
     }
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
-        
+
     }, []);
 
-    return(
+    return (
         <>
-        <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
-            <div className="header-content">
-                <ul className="left">
-                    <li onClick={()=>navigate('/')}>Home</li>
-                    <li >About</li>
-                    <li >Categories</li>
-                </ul>
-                <div className="center" onClick={()=>navigate('/')}>AK-Estore</div>
-                <div className="right">
-                    <TbSearch onClick={()=>{setShowSearch(true)}}/>
-                    <AiOutlineHeart />
-                    <span className="cart-icon" onClick={()=>setShowCart(true)}>
-                        <CgShoppingCart />
-                        <span>{cartCount}</span>
-                    </span>
+            <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
+                <div className="header-content">
+                    <ul className="left">
+                        <li onClick={() => navigate('/')}>Home</li>
+                        <li onClick={() => { scroll('about') }}>About</li>
+                        <li onClick={() => { scroll('categories') }}>Shop Now</li>
+                    </ul>
+                    <div className="center" onClick={() => navigate('/')}>AK-Estore</div>
+                    <div className="right">
+                        <TbSearch onClick={() => { setShowSearch(true) }} />
+                        <AiOutlineHeart />
+                        <span className="cart-icon" onClick={() => setShowCart(true)}>
+                            <CgShoppingCart />
+                            <span>{cartCount}</span>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </header>
-        {showCart && <Cart setShowCart={setShowCart} />}
-        {showSearch && <Search setShowSearch={setShowSearch}/>}
-    </>
+            </header>
+            {showCart && <Cart setShowCart={setShowCart} />}
+            {showSearch && <Search setShowSearch={setShowSearch} />}
+        </>
     )
 };
 

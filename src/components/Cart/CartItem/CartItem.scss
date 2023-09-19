@@ -1,5 +1,6 @@
 .cart-products {
     flex-grow: 1;
+    overflow-y: scroll;
     .cart-product {
         padding: 20px 15px;
         display: flex;
@@ -76,4 +77,7 @@
             background-color: rgba(0, 0, 0, 0.05);
         }
     }
+}
+.cart-products::-webkit-scrollbar{
+    display: none;
 }

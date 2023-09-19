@@ -1,7 +1,9 @@
 import "./Banner.scss";
 import BannerImg from "../../../assets/banner-img.png";
+// import { Navigate, useNavigate } from "react-router-dom";
 
 const Banner = () => {
+
     return <div className="hero-banner">
         <div className="content">
             <div className="text-content">
@@ -12,8 +14,8 @@ const Banner = () => {
                     curae tempor
                 </p>
                 <div className="ctas">
-                    <div className="banner-cta">Read More</div>
-                    <div className="banner-cta v2">Shop Now</div>
+                    <a className="banner-cta" href="https://github.com/AK-Baghel/E-Commerce-Website-Full-Stack" target="_blank">GitHub</a>
+                    <a className="banner-cta v2" href="https://www.linkedin.com/in/ankit-kumar-2119781b4/" target="_blank">Linkedin</a>
                 </div>
             </div>
             <img className="banner-img" src={BannerImg} alt="" />

@@ -4,10 +4,10 @@ import "./Category.scss";
 
 const Category = ({ categories }) => {
     const navigate = useNavigate();
-    console.log(categories);
 
     return (
         <div className="shop-by-category">
+            <div className="sec-heading">Categories</div>
             <div className="categories">
                 {
                     categories?.data?.map((item) => {
