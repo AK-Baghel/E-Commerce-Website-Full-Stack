@@ -24,7 +24,7 @@ const AppContext = ({ children }) => {
         let subTotal = 0;
         cartItems.map(
             (item) =>
-                (subTotal += item.attributes.price * item.attributes.quantity)
+                {subTotal += item.attributes.price * item.attributes.quantity}
         );
         setCartSubTotal(subTotal);
     }, [cartItems]);

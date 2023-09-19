@@ -12,6 +12,8 @@ import { Context } from "../../utils/context";
 import "./Header.scss";
 
 const Header = () => {
+    const {cartCount}=useContext(Context);
+
 
     const [scrolled, setScrolled] = useState(false);
     const [showCart, setShowCart] = useState(false);
@@ -28,7 +30,8 @@ const Header = () => {
         }
     }
     useEffect(() => {
-        window.addEventListener("scroll", handleScroll)
+        window.addEventListener("scroll", handleScroll);
+        
     }, []);
 
     return(
@@ -46,7 +49,7 @@ const Header = () => {
                     <AiOutlineHeart />
                     <span className="cart-icon" onClick={()=>setShowCart(true)}>
                         <CgShoppingCart />
-                        <span>5</span>
+                        <span>{cartCount}</span>
                     </span>
                 </div>
             </div>
