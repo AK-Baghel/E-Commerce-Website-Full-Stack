@@ -10,6 +10,7 @@ const AppContext = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [cartCount, setCartCount] = useState(0);
     const [cartSubTotal, setCartSubTotal] = useState(0);
+    const [totalFav, setTotalFav] = useState([]);
     const location = useLocation();
 
     useEffect(() => {
@@ -23,8 +24,7 @@ const AppContext = ({ children }) => {
 
         let subTotal = 0;
         cartItems.map(
-            (item) =>
-                {subTotal += item.attributes.price * item.attributes.quantity}
+            (item) => { subTotal += item.attributes.price * item.attributes.quantity }
         );
         setCartSubTotal(subTotal);
     }, [cartItems]);
@@ -59,21 +59,37 @@ const AppContext = ({ children }) => {
         setCartItems(items);
     };
 
+    useEffect(() => {
+        localStorage.setItem("fav", JSON.stringify(totalFav));
+    }, [totalFav]);
+
+    const handleTotalFav = (like, id) => {
+        setTotalFav(prevTotalFav => {
+            if (!like)
+                return [...prevTotalFav, id];
+            else
+                return prevTotalFav.filter(item => item !== id);
+        })
+    };
+
     return (
         <Context.Provider value={{
             products,
-                setProducts,
-                categories,
-                setCategories,
-                cartItems,
-                setCartItems,
-                handleAddToCart,
-                cartCount,
-                handleRemoveFromCart,
-                showCart,
-                setShowCart,
-                handleCartProductQuantity,
-                cartSubTotal,
+            setProducts,
+            categories,
+            setCategories,
+            cartItems,
+            setCartItems,
+            handleAddToCart,
+            cartCount,
+            handleRemoveFromCart,
+            showCart,
+            setShowCart,
+            handleCartProductQuantity,
+            cartSubTotal,
+            totalFav,
+            setTotalFav,
+            handleTotalFav,
         }}>
             {children}
         </Context.Provider>

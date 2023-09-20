@@ -1,5 +1,6 @@
 @import "../../../css-config/mixins.scss";
 .product-card {
+    position: relative;
     cursor: pointer;
     width: calc(50% - 5px);
     margin-bottom: 20px;
@@ -43,6 +44,11 @@
             @include md {
                 font-size: 24px;
             }
+        }
+        .box1{
+            position:absolute;
+            top:1%;
+            right: 4%;
         }
     }
 }

@@ -7,6 +7,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 import Search from "./Search/Search";
 import Cart from "../Cart/Cart";
+import Favourite from "../Favourite/Favourite"
 import { Context } from "../../utils/context";
 
 import "./Header.scss";
@@ -25,6 +26,7 @@ const Header = () => {
 
     const [scrolled, setScrolled] = useState(false);
     const [showCart, setShowCart] = useState(false);
+    const [showFav, setShowFav] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
 
     const navigate = useNavigate();
@@ -54,7 +56,7 @@ const Header = () => {
                     <div className="center" onClick={() => navigate('/')}>AK-Estore</div>
                     <div className="right">
                         <TbSearch onClick={() => { setShowSearch(true) }} />
-                        <AiOutlineHeart />
+                        <AiOutlineHeart onClick={() => { setShowFav(true) }}/>
                         <span className="cart-icon" onClick={() => setShowCart(true)}>
                             <CgShoppingCart />
                             <span>{cartCount}</span>
@@ -63,6 +65,7 @@ const Header = () => {
                 </div>
             </header>
             {showCart && <Cart setShowCart={setShowCart} />}
+            {showFav && <Favourite setShowFav={setShowFav} />}
             {showSearch && <Search setShowSearch={setShowSearch} />}
         </>
     )
