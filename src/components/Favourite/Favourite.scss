@@ -1,0 +1,74 @@
+@import "../../css-config/mixins.scss";
+
+.category-fav-content {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    transform: translateY(100%);
+    animation: slideSearchWindow 0.5s ease forwards;
+    padding: 2rem  ;
+    overflow-y: scroll;
+    
+    .fav-layout {
+        // margin: 2rem  ;
+        display: flex;
+        justify-content: space-between;
+        .fav-title {
+            // margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+
+            @include md {
+                // margin-bottom: 40px;
+                font-size: 40px;
+            }
+
+            &:after {
+                content: "";
+                display: block;
+                margin-top: 5px;
+                width: 75px;
+                height: 4px;
+                background-color: #8e2de2;
+
+                @include md {
+                    margin-top: 15px;
+                }
+
+            }
+
+        }
+        .close{
+            font-size: 2rem;
+            height: fit-content;
+            padding: 0 0;
+            cursor: pointer;
+            color: rgb(71, 71, 71);
+            transition: all 0.3s ease;
+            &:hover{
+                color: rgb(0, 0, 0);
+            }
+        }
+        
+    }
+    hr{
+        margin: 2rem 0;
+    }
+}
+@keyframes slideSearchWindow {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+.category-fav-content::-webkit-scrollbar{
+    display: none;
+}
